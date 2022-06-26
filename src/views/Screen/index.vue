@@ -1,7 +1,6 @@
 <template>
   <div class="container">
-    <loading v-if="!ready">Loading...</loading>
-    <container :options="{width: 3840, height: 2160}" v-else>
+    <container :options="{width: 3840, height: 2160}">
       <div class="header">
         <top-header/>
       </div>
@@ -11,7 +10,7 @@
             <real-time-class :data="eqpData" />
           </div>
           <div class="left2">
-            <history-class :data="datas.historyData" />
+            <history-class />
           </div>
         </div>
         <div class="center">
@@ -42,7 +41,6 @@
 
 <script>
   /* eslint-disable */
-  import Loading from '../../components/Loading'
   import Container from '../../components/Container'
   import TopHeader from '../../components/Header/index'
   import HistoryClass from '../../components/HistoryClass/index'
@@ -56,7 +54,6 @@
 
   export default {
     components: {
-      Loading,
       Container,
       AbnormalTraffic,
       Prediction,

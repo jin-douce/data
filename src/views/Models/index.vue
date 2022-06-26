@@ -56,7 +56,7 @@ export default {
   },
   setup(){
       const activeName = ref("first")
-      const handleClick = (tab, event) => {
+      const handleClick = (tab) => {
           console.log("===================", tab);
       }
       const lenet = [

@@ -49,17 +49,7 @@
           num: 9
         }]
 
-        const eqpDatas = [
-          ['设备1', 'XiaomiAIspeaker'],
-          ['设备2', 'Intelligentcamera'],
-          ['设备3', 'miphone'],
-          ['设备4', 'Airpurifier'],
-          ['设备5', 'Intelligenthumidifier'],
-          ['设备6', 'Smartswitch'],
-          ['设备7', 'Desklamp'],
-          ['设备8', 'Sweepingrobot'],
-          ['设备9', 'Doorandwindowsensor']
-        ]
+        const eqpData = props.data
         const appData = [
           ['app1', 'P2P'],
           ['app2', 'Music'],
@@ -74,12 +64,12 @@
         const data = []
         const data2 = []
         const align = []
-        for (let i = 0; i < eqpDatas.length; i++) {
+        for (let i = 0; i < eqpData.length; i++) {
           data[i] = []
           data2[i] = []
           align[i] = 'center'
           for (let j = 0; j < 2; j++) {
-            data[i].push(`<div>${eqpDatas[i][j]}</div>`)
+            data[i].push(`<div>${eqpData[i][j]}</div>`)
             data2[i].push(`<div>${appData[i][j]}</div>`)
           }
         }

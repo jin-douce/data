@@ -6,12 +6,9 @@
 </template>
 
 <script>
- import Screen from './views/Screen'
+//  import Screen from './views/Screen'
 
  export default {
-   components: {
-     Screen
-   }
  }
 </script>
 

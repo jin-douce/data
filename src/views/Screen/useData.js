@@ -1,8 +1,7 @@
 import { onMounted, onUnmounted, ref } from 'vue'
-import { getData, getEqpData } from '../../api'
+import { getEqpData, getData } from '../../api'
 
 let task = null
-let d = new Date()
 
 export function useData() {
   const ready = ref(false)
@@ -10,12 +9,10 @@ export function useData() {
   const eqpData = ref({})
   const newData = ref({})
 
-  onMounted(() => {
-    setTimeout(async () => {
-      ready.value = true
-      datas.value = await getData()
-      eqpData.value = await getEqpData()
-    }, 1000)
+  onMounted(async () => {
+    datas.value = await getData()
+    eqpData.value = await getEqpData()
+    ready.value = true
     task = setInterval(async () => {
       datas.value = await getData()
       newData.value = await getEqpData()
@@ -36,7 +33,7 @@ export function useData() {
 
   return {
     ready,
-    datas,
-    eqpData
+    eqpData,
+    datas
   }
 }

@@ -10,7 +10,7 @@
   import autoResize from './autoResize.js'
 
   export default {
-    name: 'DvFullScreenContainer',
+    name: 'ScreenContainer',
     mixins: [autoResize],
     props: {
       options: {

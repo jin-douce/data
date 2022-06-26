@@ -18,7 +18,7 @@
 
 <script>
   import * as Echarts from 'echarts'
-  import { onMounted, watch } from 'vue'
+  import { watch } from 'vue'
   import { clock as useClock } from '../../utils/clock'
 
   export default {
@@ -130,8 +130,6 @@
         chart2.setOption(opt)
         // currentChart === 0 ? currentChart = 1 : currentChart = 0
       }
-
-
 
       watch(() => props.data, () => {
         update()

@@ -23,7 +23,7 @@
           background-color: ${defaultConfig[row.rowIndex % 2 === 0 ? 'evenRowBGC' : 'oddRowBGC']};
           fontSize: ${defaultConfig.columnFontSize}px;
         `"
-      >
+      > 
         <div class="ceil" v-for="(ceil, ci) in row.ceils" :key="ceil + ri + ci"
           :style="{ width: `${widths[ci]}px` }"
           align="center"
@@ -49,6 +49,7 @@
     data() {
       return {
         ref: 'scroll-board',
+        // 默认配置
         defaultConfig: {
           header: [],
           data: [],
@@ -56,8 +57,8 @@
           headerBGC: 'rgba(70, 130, 180, .6)',
           headerFontSize: 24,
           columnFontSize: 14,
-          oddRowBGC: 'rgba(70, 130, 180, .4)',
-          evenRowBGC: 'rgba(70, 130, 180, .2)',
+          oddRowBGC: 'rgba(70, 130, 180, .4)', // 奇数行背景色
+          evenRowBGC: 'rgba(70, 130, 180, .2)', // 偶数行背景色
           waitTime: 2000,
           headerHeight: 55,
           columnWidth: [],
@@ -69,12 +70,13 @@
         widths: [],
         heights: [],
         avgHeight: 0,
-        animationIndex: 0,
+        animationIndex: 0, // 当前滚动的行index
         animationHandler: '',
         updater: 0
       }
     },
     watch: {
+      // 当config变化时执行
       config() {
         this.stopAnimation()
         this.calcData()

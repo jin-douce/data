@@ -15,6 +15,9 @@ module.exports = defineConfig({
       Components({
         resolvers: [ElementPlusResolver()]
       })
-    ]
+    ],
+    devServer: {
+      historyApiFallback: true
+    }
   }
 });

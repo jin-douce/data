@@ -36,9 +36,6 @@
 
   export default {
     name: 'historyClass',
-    props: {
-      data: Object
-    },
     setup() {
       let start_time = ref("")
       let end_time = ref("")
@@ -47,7 +44,7 @@
       let history_data = [], times = [], source_data = []
       // 初始值
       let _source = [
-        ['time', 1656219635, 1656219695, 1656219755, 1656219815, 1656219875, 1656219935, 1656219995, 1656220055, 1656220115, 1656220175, 1656220235],
+        ['time', "1656219635", "1656219695", "1656219755", "1656219815", "1656219875", "1656219935", "1656219995", "1656220055", "1656220115", "1656220175", "1656220235"],
         ['设备1', 11.06, 10.26, 0, 22.09, 11.35, 20.43, 11.41, 11.67, 21.27, 11.35, 14.52],
         ['设备2', 0.91, 1, 0, 0, 0.91, 0.91, 0.97, 1.92, 1.01, 0, 0.97],
         ['设备3', 11.17, 8.73, 0, 19.33, 11.64, 8.91, 11.08, 11.37, 11.68, 9.13, 11.18],
@@ -81,7 +78,7 @@
         for(let k = start_key; k <= end_key; k+=60){
           const data = JSON.parse(localStorage.getItem(k.toString()))
           if(data){
-            times.push(k)
+            times.push(k.toString())
             history_data.push(data)
           }
         }
@@ -113,8 +110,8 @@
             },
             color: [
                     '#dd6b66',
-                    '#759aa0',
                     '#e69d87',
+                    '#759aa0',
                     '#8dc1a9',
                     '#ea7e53',
                     '#eedd78',
@@ -205,8 +202,8 @@
                 },
                 encode: {
                   itemName: 'time',
-                  value: '12',
-                  tooltip: '12'
+                  value: "1656219635",
+                  tooltip: "1656219635"
                 }
               }
             ],
@@ -245,10 +242,7 @@
     }
   }
 </script>
-
-<style>
-
-</style>
+ 
 <style lang="scss" scoped>
   .history {
     width: 100%;

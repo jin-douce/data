@@ -6,23 +6,23 @@
           异常流量检测
       </div>
       <div :inline="true" class="time-wrapper">
-          <!-- <el-date-picker
+          <el-date-picker
             type="datetime"
             placeholder="开始时间"
             id="picker1"
+            v-model="start_time"
             >
-          </el-date-picker> -->
-          <input type="date" name="start_time" value="" style="width: 150px; height: 40px; font-size: 22px" />
+          </el-date-picker>
 
           <span class="to">To</span>
-          <input type="date" name="start_time" value="" style="width: 150px; height: 40px; font-size: 22px" />
 
-          <!-- <el-date-picker
+          <el-date-picker
             type="datetime"
             placeholder="结束时间"
             id="picker2"
+            v-model="end_time"
             >
-          </el-date-picker> -->
+          </el-date-picker>
           <el-button type="primary">查询</el-button>
       </div>
     </div>
@@ -59,7 +59,7 @@
     </div>
   </div>
 </template>
-
+ 
 <script>
   import * as Echarts from 'echarts'
   import { ref, watch } from 'vue'
@@ -69,11 +69,12 @@
   export default {
     name: 'abnormalTraffic',
     components: { AutoScrollTable, CountTo },
-    props: {
-      data: Array
+    props: { 
+      data: Array 
     },
     setup(props) {
       let chart
+      let start_time = ref(""), end_time = ref("")
       const numData = ref([])
       const config = ref(null)
       const endNum = ref([0, 0])
@@ -178,20 +179,7 @@
         chart.setOption(createOption())
       }
       watch(() => props.data, () => {
-        const trafficData = [
-          ['2022-02-01 14:44:55', '192.168.101.2', '22', '192.168.101.4', '22'],
-          ['2022-02-02 14:44:55', '192.168.101.2', '22', '192.168.101.4', '22'],
-          ['2022-02-03 14:44:55', '192.168.101.2', '22', '192.168.101.4', '22'],
-          ['2022-02-04 14:44:55', '192.168.101.2', '22', '192.168.101.4', '22'],
-          ['2022-02-05 14:44:55', '192.168.101.2', '22', '192.168.101.4', '22'],
-          ['2022-02-06 14:44:55', '192.168.101.2', '22', '192.168.101.4', '22'],
-          ['2022-02-07 14:44:55', '192.168.101.2', '22', '192.168.101.4', '22'],
-          ['2022-02-08 14:44:55', '192.168.101.2', '22', '192.168.101.4', '22'],
-          ['2022-02-09 14:44:55', '192.168.101.2', '22', '192.168.101.4', '22'],
-          ['2022-02-10 14:44:55', '192.168.101.2', '22', '192.168.101.4', '22'],
-          ['2022-02-11 14:44:55', '192.168.101.2', '22', '192.168.101.4', '22'],
-          ['2022-02-12 14:44:55', '192.168.101.2', '22', '192.168.101.4', '22']
-        ]
+        const trafficData = props.data
         const data = []
         const align = []
         for (let i = 0; i < trafficData.length; i++) {
@@ -210,13 +198,16 @@
         startNum.value = endNum.value
         endNum.value[0] = startNum.value[0] + 2
         endNum.value[1] = startNum.value[1] + 10
+        console.log("hduishg", startNum.value , endNum.value);
         updateChart()
       })
       return {
         config,
         numData,
         startNum,
-        endNum
+        endNum,
+        start_time,
+        end_time
       }
     }
   }
