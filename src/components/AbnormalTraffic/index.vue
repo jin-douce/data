@@ -192,13 +192,11 @@
         config.value = {
           header: ['Time', 'Src IP Addr', 'Src Port', 'Dst IP Addr', 'Dst Port'],
           data, // 表格数据
-          align, // 表格排序
           rowNum: 10 // 显示行数
         }
         startNum.value = endNum.value
         endNum.value[0] = startNum.value[0] + 2
         endNum.value[1] = startNum.value[1] + 10
-        console.log("hduishg", startNum.value , endNum.value);
         updateChart()
       })
       return {
