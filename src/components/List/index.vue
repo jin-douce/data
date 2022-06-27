@@ -78,13 +78,11 @@
           {
             header: ['序号', '名称'],
             data,
-            align,
             rowNum: 4
           },
           {
             header: ['序号', '名称'],
             data: data2,
-            align,
             rowNum: 4
           }
         ]
